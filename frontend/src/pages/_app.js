@@ -1,4 +1,5 @@
 import App, { Container } from 'next/app';
+import Page from '../components/Page';
 
 export default class SickFits extends App {
   render() {
@@ -6,8 +7,9 @@ export default class SickFits extends App {
 
     return (
       <Container>
-        <p>Hey, I'm on every page</p>
-        <Component />
+        <Page>
+          <Component />
+        </Page>
       </Container>
     );
   }
