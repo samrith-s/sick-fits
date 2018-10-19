@@ -7,9 +7,9 @@ export const HeaderBlock = styled.div`
 `;
 
 export const Logo = styled.a`
-  padding: 10px;
-  background: red;
-  color: #fff;
+  padding: 5px;
+  background: ${props => props.theme.colors.red};
+  color: ${props => props.theme.colors.white};
   perspective: 200px;
   transform: skew(-10deg);
   text-transform: uppercase;
