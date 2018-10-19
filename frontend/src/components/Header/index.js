@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+
 import Nav from './Nav';
+
+import { Logo, HeaderBlock } from '../../styles/header.styles';
 
 export default class Header extends Component {
   render() {
     return (
       <div>
-        <div className="bar">
+        <HeaderBlock>
           <Link href="/">
-            <a>Sick Fits!</a>
+            <Logo>Sick Fits!</Logo>
           </Link>
           <div className="nav">
             <Nav />
           </div>
-        </div>
+        </HeaderBlock>
         <div className="sub-bar">Search</div>
         <div>Cart</div>
       </div>
