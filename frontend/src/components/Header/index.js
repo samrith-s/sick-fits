@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
 import Link from 'next/link';
+import NProgress from 'nprogress';
 
 import Nav from './Nav';
 
-import { Logo, HeaderBlock } from '../../styles/header.styles';
+import { HeaderBlock, NavBlock, Logo } from '../../styles/header.styles';
+
+Router.onRouteChangeStart = () => {
+  NProgress.start();
+};
+
+Router.onRouteChangeComplete = () => {
+  NProgress.done();
+};
+
+Router.onRouteChangeError = () => {
+  NProgress.done();
+};
 
 export default class Header extends Component {
   render() {
     return (
-      <div>
-        <HeaderBlock>
+      <HeaderBlock>
+        <NavBlock>
           <Link href="/">
             <Logo>Sick Fits!</Logo>
           </Link>
-          <div className="nav">
-            <Nav />
-          </div>
-        </HeaderBlock>
+          <Nav />
+        </NavBlock>
         <div className="sub-bar">Search</div>
         <div>Cart</div>
-      </div>
+      </HeaderBlock>
     );
   }
 }
