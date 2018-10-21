@@ -5318,7 +5318,7 @@ react-adopt@^0.6.0:
     react "^16.3.2"
     react-display-name "^0.2.4"
 
-react-apollo@^2.2.1, react-apollo@^2.2.4:
+react-apollo@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.2.4.tgz#05b2a91deb4d5f30d2511fc663abc465b219435e"
   dependencies:
