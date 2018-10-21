@@ -12,3 +12,5 @@ export const NAV_LINKS = [
     link: '/sell'
   }
 ];
+
+export const ITEMS_PER_PAGE = 4;
