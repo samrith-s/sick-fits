@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
 
-import { ALL_ITEMS } from '../queries/items.queries';
+import { ALL_ITEMS } from '../gql/queries/items.queries';
+
+import { withQuery } from '../utils/graphql-util';
 
 class Items extends Component {
   render() {
@@ -13,4 +14,4 @@ class Items extends Component {
   }
 }
 
-export default graphql(ALL_ITEMS)(Items);
+export default withQuery(ALL_ITEMS)(Items);
