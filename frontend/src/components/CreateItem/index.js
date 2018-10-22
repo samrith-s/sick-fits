@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
 
 import { CREATE_ITEM_MUTATION } from '../../gql/mutations/items.mutations';
+
+import withMutation from '../../utils/graphql-util/withMutation';
 
 import Form from '../../styles/form.styles';
 
@@ -30,11 +31,10 @@ class CreateItem extends Component {
     const res = await mutate({
       variables: this.state
     });
-    console.log('res', res);
   };
 
   render() {
-    const { loading } = this.props.mutation || {};
+    const { loading } = this.props.payload || {};
     const { title, price, description } = this.state;
 
     return (
@@ -84,4 +84,4 @@ class CreateItem extends Component {
   }
 }
 
-export default graphql(CREATE_ITEM_MUTATION)(CreateItem);
+export default withMutation(CREATE_ITEM_MUTATION)(CreateItem);
