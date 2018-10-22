@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
 
 import { CREATE_ITEM_MUTATION } from '../../gql/mutations/items.mutations';
+
+import { CLOUDINARY_ENDPOINT } from '../../lib/config';
 
 import withMutation from '../../utils/graphql-util/withMutation';
 
@@ -8,7 +11,7 @@ import Form from '../../styles/form.styles';
 
 class CreateItem extends Component {
   state = {
-    title: 'some title',
+    title: 'some title 1337',
     description: 'some description',
     image: 'dog1.jpg',
     largeImage: 'dogLarge1.jpg',
@@ -31,6 +34,32 @@ class CreateItem extends Component {
     const res = await mutate({
       variables: this.state
     });
+    Router.push({
+      pathname: '/item',
+      query: {
+        id: res.data.createItem.id
+      }
+    });
+  };
+
+  handleImageUpload = async e => {
+    const {
+      target: { files }
+    } = e;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'sick-fits');
+
+    const res = await fetch(CLOUDINARY_ENDPOINT.upload(), {
+      method: 'POST',
+      body: data
+    });
+    const file = await res.json();
+    console.log('file', file);
+    this.setState({
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url
+    });
   };
 
   render() {
@@ -40,6 +69,17 @@ class CreateItem extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <fieldset disabled={loading} aria-busy={loading}>
+          <label htmlFor="file">
+            Image
+            <input
+              type="file"
+              id="file"
+              name="file"
+              placeholder="file"
+              onChange={this.handleImageUpload}
+            />
+          </label>
+
           <label htmlFor="title">
             Title
             <input
