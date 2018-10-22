@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 
-export default class Items extends Component {
+import withQuery from '../lib/withQuery';
+
+import { ALL_ITEMS } from '../queries/items.queries';
+
+class Items extends Component {
   render() {
-    return <div>Items</div>;
+    return (
+      <div>
+        <p>I am the child of query!</p>
+      </div>
+    );
   }
 }
+
+export default withQuery(ALL_ITEMS)(Items);
