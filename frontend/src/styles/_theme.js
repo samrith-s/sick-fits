@@ -8,6 +8,7 @@ export default {
     red: '#ff0000'
   },
   variables: {
+    borderRadius: '5px',
     maxWidth: '1000px'
   }
 };
