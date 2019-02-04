@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 
-import { ALL_ITEMS } from '../gql/queries/items.queries';
+import Items from '../components/Items';
 
-import { withQuery } from '../utils/graphql-util';
-
-class Items extends Component {
+class ItemsPage extends Component {
   render() {
-    return (
-      <div>
-        <p>I am the child of query!</p>
-      </div>
-    );
+    return <Items />;
   }
 }
 
-export default withQuery(ALL_ITEMS)(Items);
+export default ItemsPage;
