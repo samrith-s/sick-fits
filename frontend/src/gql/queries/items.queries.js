@@ -6,8 +6,6 @@ export const ALL_ITEMS = gql`
       id
       title
       price
-      description
-      image
       largeImage
     }
   }
